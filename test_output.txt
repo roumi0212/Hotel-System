@@ -1,0 +1,316 @@
+[1A[2K[2m[WebServer] [22m[33m[1m⚠[22m[39m `eslint` configuration in next.config.ts is no longer supported. See more info here: https://nextjs.org/docs/app/api-reference/cli/next#next-lint-options
+
+[1A[2K[2m[WebServer] [22m[33m[1m⚠[22m[39m Invalid next.config.ts options detected: 
+
+[1A[2K[2m[WebServer] [22m[33m[1m⚠[22m[39m     Unrecognized key(s) in object: 'eslint'
+[2m[WebServer] [22m[33m[1m⚠[22m[39m See more info here: https://nextjs.org/docs/messages/invalid-next-config
+
+
+Running 6 tests using 6 workers
+
+[1A[2K[1/6] [chromium] › tests\e2e.spec.ts:12:7 › Hotel System MVP E2E › Admin can login and view rooms
+[1A[2K[2/6] [chromium] › tests\e2e.spec.ts:61:7 › Hotel System MVP E2E › Admin check-in vacant room, check-out checked-in room
+[1A[2K[3/6] [chromium] › tests\e2e.spec.ts:90:7 › Hotel System MVP E2E › Admin sees offline room state
+[1A[2K[4/6] [chromium] › tests\e2e.spec.ts:48:7 › Hotel System MVP E2E › Guest cannot view unassigned room
+[1A[2K[5/6] [chromium] › tests\e2e.spec.ts:25:7 › Hotel System MVP E2E › Guest can login and view assigned room
+[1A[2K[6/6] [chromium] › tests\e2e.spec.ts:104:7 › Hotel System MVP E2E › Simulator updates room status
+[1A[2K[2m[WebServer] [22m[31m[1m⨯[22m[39m Error [PrismaClientValidationError]: 
+[2m[WebServer] [22mInvalid `prisma.room.findUnique()` invocation:
+[2m[WebServer] [22m
+[2m[WebServer] [22m{
+[2m[WebServer] [22m  where: {
+[2m[WebServer] [22m    room_number: undefined,
+[2m[WebServer] [22m?   id?: String,
+[2m[WebServer] [22m?   controller_id?: String,
+[2m[WebServer] [22m?   AND?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   OR?: RoomWhereInput[],
+[2m[WebServer] [22m?   NOT?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   floor?: StringFilter | String,
+[2m[WebServer] [22m?   state?: EnumRoomStateFilter | RoomState,
+[2m[WebServer] [22m?   guest_controls_enabled?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   do_not_disturb?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   housekeeping_requested?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   occupied_now?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   door_open?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   current_temperature?: DecimalNullableFilter | Decimal | Null,
+[2m[WebServer] [22m?   last_heartbeat_at?: DateTimeNullableFilter | DateTime | Null,
+[2m[WebServer] [22m?   adapter_mode?: EnumAdapterModeFilter | AdapterMode,
+[2m[WebServer] [22m?   created_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   updated_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   devices?: DeviceListRelationFilter,
+[2m[WebServer] [22m?   sensor_readings?: SensorReadingListRelationFilter,
+[2m[WebServer] [22m?   commands?: CommandListRelationFilter,
+[2m[WebServer] [22m?   guest_requests?: GuestRequestListRelationFilter,
+[2m[WebServer] [22m?   audit_logs?: AuditLogListRelationFilter,
+[2m[WebServer] [22m?   room_assignments?: RoomAssignmentListRelationFilter
+[2m[WebServer] [22m  },
+[2m[WebServer] [22m  include: {
+[2m[WebServer] [22m    room_assignments: {
+[2m[WebServer] [22m      where: {
+[2m[WebServer] [22m        is_active: true
+[2m[WebServer] [22m      },
+[2m[WebServer] [22m      include: {
+[2m[WebServer] [22m        guest_user: true
+[2m[WebServer] [22m      }
+[2m[WebServer] [22m    }
+[2m[WebServer] [22m  }
+[2m[WebServer] [22m}
+[2m[WebServer] [22m
+[2m[WebServer] [22mArgument `where` of type RoomWhereUniqueInput needs at least one of `id`, `room_number` or `controller_id` arguments. Available options are marked with ?.
+[2m[WebServer] [22m    at async j [90m(C:\Users\roumi\Downloads\Hurghada project-20260210T075019Z-1-001\Hurghada project\hotel-system\[39m.next\server\chunks\ssr\[root-of-the-server]__0jazhft._.js:1:13713[90m)[39m {
+[2m[WebServer] [22m  clientVersion: [32m'6.19.2'[39m,
+[2m[WebServer] [22m  digest: [32m'2828464107'[39m
+[2m[WebServer] [22m}
+
+[1A[2K[2m[WebServer] [22m[31m[1m⨯[22m[39m Error [PrismaClientValidationError]: 
+[2m[WebServer] [22mInvalid `prisma.room.findUnique()` invocation:
+[2m[WebServer] [22m
+[2m[WebServer] [22m{
+[2m[WebServer] [22m  where: {
+[2m[WebServer] [22m    room_number: undefined,
+[2m[WebServer] [22m?   id?: String,
+[2m[WebServer] [22m?   controller_id?: String,
+[2m[WebServer] [22m?   AND?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   OR?: RoomWhereInput[],
+[2m[WebServer] [22m?   NOT?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   floor?: StringFilter | String,
+[2m[WebServer] [22m?   state?: EnumRoomStateFilter | RoomState,
+[2m[WebServer] [22m?   guest_controls_enabled?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   do_not_disturb?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   housekeeping_requested?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   occupied_now?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   door_open?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   current_temperature?: DecimalNullableFilter | Decimal | Null,
+[2m[WebServer] [22m?   last_heartbeat_at?: DateTimeNullableFilter | DateTime | Null,
+[2m[WebServer] [22m?   adapter_mode?: EnumAdapterModeFilter | AdapterMode,
+[2m[WebServer] [22m?   created_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   updated_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   devices?: DeviceListRelationFilter,
+[2m[WebServer] [22m?   sensor_readings?: SensorReadingListRelationFilter,
+[2m[WebServer] [22m?   commands?: CommandListRelationFilter,
+[2m[WebServer] [22m?   guest_requests?: GuestRequestListRelationFilter,
+[2m[WebServer] [22m?   audit_logs?: AuditLogListRelationFilter,
+[2m[WebServer] [22m?   room_assignments?: RoomAssignmentListRelationFilter
+[2m[WebServer] [22m  },
+[2m[WebServer] [22m  include: {
+[2m[WebServer] [22m    room_assignments: {
+[2m[WebServer] [22m      where: {
+[2m[WebServer] [22m        is_active: true
+[2m[WebServer] [22m      },
+[2m[WebServer] [22m      include: {
+[2m[WebServer] [22m        guest_user: true
+[2m[WebServer] [22m      }
+[2m[WebServer] [22m    }
+[2m[WebServer] [22m  }
+[2m[WebServer] [22m}
+[2m[WebServer] [22m
+[2m[WebServer] [22mArgument `where` of type RoomWhereUniqueInput needs at least one of `id`, `room_number` or `controller_id` arguments. Available options are marked with ?.
+[2m[WebServer] [22m    at async j [90m(C:\Users\roumi\Downloads\Hurghada project-20260210T075019Z-1-001\Hurghada project\hotel-system\[39m.next\server\chunks\ssr\[root-of-the-server]__0jazhft._.js:1:13713[90m)[39m {
+[2m[WebServer] [22m  clientVersion: [32m'6.19.2'[39m,
+[2m[WebServer] [22m  digest: [32m'2828464107'[39m
+[2m[WebServer] [22m}
+
+[1A[2K[2m[WebServer] [22m[31m[1m⨯[22m[39m Error [PrismaClientValidationError]: 
+[2m[WebServer] [22mInvalid `prisma.room.findUnique()` invocation:
+[2m[WebServer] [22m
+[2m[WebServer] [22m{
+[2m[WebServer] [22m  where: {
+[2m[WebServer] [22m    room_number: undefined,
+[2m[WebServer] [22m?   id?: String,
+[2m[WebServer] [22m?   controller_id?: String,
+[2m[WebServer] [22m?   AND?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   OR?: RoomWhereInput[],
+[2m[WebServer] [22m?   NOT?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   floor?: StringFilter | String,
+[2m[WebServer] [22m?   state?: EnumRoomStateFilter | RoomState,
+[2m[WebServer] [22m?   guest_controls_enabled?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   do_not_disturb?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   housekeeping_requested?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   occupied_now?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   door_open?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   current_temperature?: DecimalNullableFilter | Decimal | Null,
+[2m[WebServer] [22m?   last_heartbeat_at?: DateTimeNullableFilter | DateTime | Null,
+[2m[WebServer] [22m?   adapter_mode?: EnumAdapterModeFilter | AdapterMode,
+[2m[WebServer] [22m?   created_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   updated_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   devices?: DeviceListRelationFilter,
+[2m[WebServer] [22m?   sensor_readings?: SensorReadingListRelationFilter,
+[2m[WebServer] [22m?   commands?: CommandListRelationFilter,
+[2m[WebServer] [22m?   guest_requests?: GuestRequestListRelationFilter,
+[2m[WebServer] [22m?   audit_logs?: AuditLogListRelationFilter,
+[2m[WebServer] [22m?   room_assignments?: RoomAssignmentListRelationFilter
+[2m[WebServer] [22m  },
+[2m[WebServer] [22m  include: {
+[2m[WebServer] [22m    room_assignments: {
+[2m[WebServer] [22m      where: {
+[2m[WebServer] [22m        is_active: true
+[2m[WebServer] [22m      },
+[2m[WebServer] [22m      include: {
+[2m[WebServer] [22m        guest_user: true
+[2m[WebServer] [22m      }
+[2m[WebServer] [22m    }
+[2m[WebServer] [22m  }
+[2m[WebServer] [22m}
+[2m[WebServer] [22m
+[2m[WebServer] [22mArgument `where` of type RoomWhereUniqueInput needs at least one of `id`, `room_number` or `controller_id` arguments. Available options are marked with ?.
+[2m[WebServer] [22m    at async j [90m(C:\Users\roumi\Downloads\Hurghada project-20260210T075019Z-1-001\Hurghada project\hotel-system\[39m.next\server\chunks\ssr\[root-of-the-server]__0jazhft._.js:1:13713[90m)[39m {
+[2m[WebServer] [22m  clientVersion: [32m'6.19.2'[39m,
+[2m[WebServer] [22m  digest: [32m'2828464107'[39m
+[2m[WebServer] [22m}
+
+[1A[2K[2m[WebServer] [22m[31m[1m⨯[22m[39m Error [PrismaClientValidationError]: 
+[2m[WebServer] [22mInvalid `prisma.room.findUnique()` invocation:
+[2m[WebServer] [22m
+[2m[WebServer] [22m{
+[2m[WebServer] [22m  where: {
+[2m[WebServer] [22m    id: undefined,
+[2m[WebServer] [22m?   room_number?: String,
+[2m[WebServer] [22m?   controller_id?: String,
+[2m[WebServer] [22m?   AND?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   OR?: RoomWhereInput[],
+[2m[WebServer] [22m?   NOT?: RoomWhereInput | RoomWhereInput[],
+[2m[WebServer] [22m?   floor?: StringFilter | String,
+[2m[WebServer] [22m?   state?: EnumRoomStateFilter | RoomState,
+[2m[WebServer] [22m?   guest_controls_enabled?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   do_not_disturb?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   housekeeping_requested?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   occupied_now?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   door_open?: BoolFilter | Boolean,
+[2m[WebServer] [22m?   current_temperature?: DecimalNullableFilter | Decimal | Null,
+[2m[WebServer] [22m?   last_heartbeat_at?: DateTimeNullableFilter | DateTime | Null,
+[2m[WebServer] [22m?   adapter_mode?: EnumAdapterModeFilter | AdapterMode,
+[2m[WebServer] [22m?   created_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   updated_at?: DateTimeFilter | DateTime,
+[2m[WebServer] [22m?   devices?: DeviceListRelationFilter,
+[2m[WebServer] [22m?   sensor_readings?: SensorReadingListRelationFilter,
+[2m[WebServer] [22m?   commands?: CommandListRelationFilter,
+[2m[WebServer] [22m?   guest_requests?: GuestRequestListRelationFilter,
+[2m[WebServer] [22m?   audit_logs?: AuditLogListRelationFilter,
+[2m[WebServer] [22m?   room_assignments?: RoomAssignmentListRelationFilter
+[2m[WebServer] [22m  },
+[2m[WebServer] [22m  include: {
+[2m[WebServer] [22m    room_assignments: {
+[2m[WebServer] [22m      where: {
+[2m[WebServer] [22m        is_active: true
+[2m[WebServer] [22m      },
+[2m[WebServer] [22m      include: {
+[2m[WebServer] [22m        guest_user: true
+[2m[WebServer] [22m      }
+[2m[WebServer] [22m    },
+[2m[WebServer] [22m    audit_logs: {
+[2m[WebServer] [22m      take: 8,
+[2m[WebServer] [22m      orderBy: {
+[2m[WebServer] [22m        created_at: "desc"
+[2m[WebServer] [22m      },
+[2m[WebServer] [22m      include: {
+[2m[WebServer] [22m        actor_user: true
+[2m[WebServer] [22m      }
+[2m[WebServer] [22m    },
+[2m[WebServer] [22m    devices: true
+[2m[WebServer] [22m  }
+[2m[WebServer] [22m}
+[2m[WebServer] [22m
+[2m[WebServer] [22mArgument `where` of type RoomWhereUniqueInput needs at least one of `id`, `room_number` or `controller_id` arguments. Available options are marked with ?.
+[2m[WebServer] [22m    at async j [90m(C:\Users\roumi\Downloads\Hurghada project-20260210T075019Z-1-001\Hurghada project\hotel-system\[39m.next\server\chunks\ssr\[root-of-the-server]__036brrl._.js:1:3738[90m)[39m {
+[2m[WebServer] [22m  clientVersion: [32m'6.19.2'[39m,
+[2m[WebServer] [22m  digest: [32m'2293667475'[39m
+[2m[WebServer] [22m}
+
+[1A[2K[chromium] › tests\e2e.spec.ts:25:7 › Hotel System MVP E2E › Guest can login and view assigned room
+Failed inside: Guest can login and view assigned room
+
+[1A[2K<!DOCTYPE html><html id="__next_error__"><head><link rel="preload" href="/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2" as="font" crossorigin="" type="font/woff2"><link rel="stylesheet" href="/_next/static/chunks/01e~7803xv1u1.css" data-precedence="next"><link rel="preload" as="script" fetchpriority="low" href="/_next/static/chunks/0bo-6z2fpq-v4.js"><script src="/_next/static/chunks/0pqt~8bl3ukh4.js" async=""></script><script src="/_next/static/chunks/0g09676-pligh.js" async=""></script><script src="/_next/static/chunks/0e-wrhqh4h3r5.js" async=""></script><script src="/_next/static/chunks/turbopack-0-l93qf..z3mn.js" async=""></script><script src="/_next/static/chunks/15lfpa4o3nmst.js" async=""></script><script src="/_next/static/chunks/00-csyj9a6t-x.js" async=""></script><script src="/_next/static/chunks/16f6uqo39giv8.js" async=""></script><script src="/_next/static/chunks/03~yq9q893hmn.js" nomodule=""></script><style>:root {--next-error-bg: #fff;--next-error-text: #171717;--next-error-title: #171717;--next-error-message: #171717;--next-error-digest: #666666;--next-error-btn-text: #fff;--next-error-btn-bg: #171717;--next-error-btn-border: none;--next-error-btn-secondary-text: #171717;--next-error-btn-secondary-bg: transparent;--next-error-btn-secondary-border: 1px solid rgba(0,0,0,0.08);}@media (prefers-color-scheme: dark) {:root {--next-error-bg: #0a0a0a;--next-error-text: #ededed;--next-error-title: #ededed;--next-error-message: #ededed;--next-error-digest: #a0a0a0;--next-error-btn-text: #0a0a0a;--next-error-btn-bg: #ededed;--next-error-btn-border: none;--next-error-btn-secondary-text: #ededed;--next-error-btn-secondary-bg: transparent;--next-error-btn-secondary-border: 1px solid rgba(255,255,255,0.14);}}body { margin: 0; color: var(--next-error-text); background: var(--next-error-bg); }</style></head><body><!--$--><!--/$--><script src="/_next/static/chunks/0bo-6z2fpq-v4.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[30824,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"Providers\"]\n3:I[39756,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\"]\n4:I[37457,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\"]\n5:I[47257,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"ClientPageRoot\"]\n6:I[94542,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\",\"/_next/static/chunks/16f6uqo39giv8.js\"],\"default\"]\n9:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"OutletBoundary\"]\na:\"$Sreact.suspense\"\nd:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"ViewportBoundary\"]\nf:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"MetadataBoundary\"]\n11:I[68027,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/01e~7803xv1u1.css\",\"style\"]\n:HL[\"/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"login\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"login\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/01e~7803xv1u1.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/15lfpa4o3nmst.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/00-csyj9a6t-x.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"dark\",\"children\":[\"$\",\"body\",null,{\"className\":\"inter_5972bc34-module__OU16Qa__className bg-slate-950 text-slate-50 antialiased\",\"children\":[\"$\",\"$L2\",null,{\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L5\",null,{\"Component\":\"$6\",\"serverProvidedParams\":{\"searchParams\":{},\"params\":{},\"promises\":[\"$@7\",\"$@8\"]}}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16f6uqo39giv8.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L9\",null,{\"children\":[\"$\",\"$a\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@b\"}]}]]}],{},null,false,null]},null,false,\"$@c\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lf\",null,{\"children\":[\"$\",\"$a\",null,{\"name\":\"Next.Metadata\",\"children\":\"$L10\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/01e~7803xv1u1.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"KYtpNmy7IO98eiD4icVk6\"}\n"])</script><script>self.__next_f.push([1,"12:[]\nc:\"$W12\"\n7:{}\n8:\"$0:f:0:1:1:children:1:children:0:props:children:0:props:serverProvidedParams:params\"\n"])</script><script>self.__next_f.push([1,"e:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"13:I[27201,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"IconMark\"]\nb:null\n10:[[\"$\",\"title\",\"0\",{\"children\":\"Hotel System MVP\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Next Generation Guestroom Control\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.0x3dzn~oxb6tn.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L13\",\"3\",{}]]\n"])</script><div style="font-family: system-ui, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; height: 100vh; display: flex; align-items: center; justify-content: center;"><div style="margin-top: -32px; max-width: 325px; padding: 32px 28px; text-align: left;"><svg width="32" height="32" viewBox="-0.2 -1.5 32 32" fill="none" style="margin-bottom: 24px;"><path d="M16.9328 0C18.0839 0.000116771 19.1334 0.658832 19.634 1.69531L31.4299 26.1309C32.0708 27.4588 31.1036 28.9999 29.6291 29H2.00215C0.527541 29 -0.439628 27.4588 0.201371 26.1309L11.9973 1.69531C12.4979 0.658823 13.5474 7.75066e-05 14.6984 0H16.9328ZM3.59493 26H28.0363L16.9328 3H14.6984L3.59493 26ZM15.8156 19C16.9202 19.0001 17.8156 19.8955 17.8156 21C17.8156 22.1045 16.9202 22.9999 15.8156 23C14.7111 23 13.8156 22.1046 13.8156 21C13.8156 19.8954 14.7111 19 15.8156 19ZM17.3156 16.5H14.3156V8.5H17.3156V16.5Z" fill="var(--next-error-title)"></path></svg><h1 style="font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 32px; margin: 0px 0px 12px; color: var(--next-error-title);">This page couldn’t load</h1><p style="font-size: 14px; font-weight: 400; line-height: 21px; margin: 0px 0px 20px; color: var(--next-error-message);">A server error occurred. Reload to try again.</p><div style="display: flex; gap: 8px; align-items: center;"><form style="margin: 0px;"><button type="submit" style="display: inline-flex; align-items: center; justify-content: center; height: 32px; padding: 0px 12px; font-size: 14px; font-weight: 500; line-height: 20px; border-radius: 6px; cursor: pointer; color: var(--next-error-btn-text); background: var(--next-error-btn-bg); border: var(--next-error-btn-border);">Reload</button></form></div></div></div><p style="position: fixed; bottom: 32px; left: 0px; right: 0px; text-align: center; font-family: ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, monospace; font-size: 12px; line-height: 18px; font-weight: 400; margin: 0px; color: var(--next-error-digest);">ERROR 2828464107</p></body></html>
+
+[1A[2K[chromium] › tests\e2e.spec.ts:61:7 › Hotel System MVP E2E › Admin check-in vacant room, check-out checked-in room
+Failed inside: Admin check-in vacant room, check-out checked-in room
+
+[1A[2K<!DOCTYPE html><html id="__next_error__"><head><link rel="preload" href="/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2" as="font" crossorigin="" type="font/woff2"><link rel="stylesheet" href="/_next/static/chunks/01e~7803xv1u1.css" data-precedence="next"><link rel="preload" as="script" fetchpriority="low" href="/_next/static/chunks/0bo-6z2fpq-v4.js"><script src="/_next/static/chunks/0pqt~8bl3ukh4.js" async=""></script><script src="/_next/static/chunks/0g09676-pligh.js" async=""></script><script src="/_next/static/chunks/0e-wrhqh4h3r5.js" async=""></script><script src="/_next/static/chunks/turbopack-0-l93qf..z3mn.js" async=""></script><script src="/_next/static/chunks/15lfpa4o3nmst.js" async=""></script><script src="/_next/static/chunks/00-csyj9a6t-x.js" async=""></script><script src="/_next/static/chunks/16f6uqo39giv8.js" async=""></script><script src="/_next/static/chunks/03~yq9q893hmn.js" nomodule=""></script><script src="/_next/static/chunks/0s1xk246m1po-.js"></script><script src="/_next/static/chunks/0s1xk246m1po-.js" async=""></script><style>:root {--next-error-bg: #fff;--next-error-text: #171717;--next-error-title: #171717;--next-error-message: #171717;--next-error-digest: #666666;--next-error-btn-text: #fff;--next-error-btn-bg: #171717;--next-error-btn-border: none;--next-error-btn-secondary-text: #171717;--next-error-btn-secondary-bg: transparent;--next-error-btn-secondary-border: 1px solid rgba(0,0,0,0.08);}@media (prefers-color-scheme: dark) {:root {--next-error-bg: #0a0a0a;--next-error-text: #ededed;--next-error-title: #ededed;--next-error-message: #ededed;--next-error-digest: #a0a0a0;--next-error-btn-text: #0a0a0a;--next-error-btn-bg: #ededed;--next-error-btn-border: none;--next-error-btn-secondary-text: #ededed;--next-error-btn-secondary-bg: transparent;--next-error-btn-secondary-border: 1px solid rgba(255,255,255,0.14);}}body { margin: 0; color: var(--next-error-text); background: var(--next-error-bg); }</style></head><body><!--$--><!--/$--><script src="/_next/static/chunks/0bo-6z2fpq-v4.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[30824,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"Providers\"]\n3:I[39756,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\"]\n4:I[37457,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\"]\n5:I[47257,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"ClientPageRoot\"]\n6:I[94542,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\",\"/_next/static/chunks/16f6uqo39giv8.js\"],\"default\"]\n9:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"OutletBoundary\"]\na:\"$Sreact.suspense\"\nd:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"ViewportBoundary\"]\nf:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"MetadataBoundary\"]\n11:I[68027,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/01e~7803xv1u1.css\",\"style\"]\n:HL[\"/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"login\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"login\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/01e~7803xv1u1.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/15lfpa4o3nmst.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/00-csyj9a6t-x.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"dark\",\"children\":[\"$\",\"body\",null,{\"className\":\"inter_5972bc34-module__OU16Qa__className bg-slate-950 text-slate-50 antialiased\",\"children\":[\"$\",\"$L2\",null,{\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L5\",null,{\"Component\":\"$6\",\"serverProvidedParams\":{\"searchParams\":{},\"params\":{},\"promises\":[\"$@7\",\"$@8\"]}}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16f6uqo39giv8.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L9\",null,{\"children\":[\"$\",\"$a\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@b\"}]}]]}],{},null,false,null]},null,false,\"$@c\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lf\",null,{\"children\":[\"$\",\"$a\",null,{\"name\":\"Next.Metadata\",\"children\":\"$L10\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/01e~7803xv1u1.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"KYtpNmy7IO98eiD4icVk6\"}\n"])</script><script>self.__next_f.push([1,"12:[]\nc:\"$W12\"\n7:{}\n8:\"$0:f:0:1:1:children:1:children:0:props:children:0:props:serverProvidedParams:params\"\n"])</script><script>self.__next_f.push([1,"e:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"13:I[27201,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"IconMark\"]\nb:null\n10:[[\"$\",\"title\",\"0\",{\"children\":\"Hotel System MVP\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Next Generation Guestroom Control\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.0x3dzn~oxb6tn.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L13\",\"3\",{}]]\n"])</script><div style="font-family: system-ui, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; height: 100vh; display: flex; align-items: center; justify-content: center;"><div style="margin-top: -32px; max-width: 325px; padding: 32px 28px; text-align: left;"><svg width="32" height="32" viewBox="-0.2 -1.5 32 32" fill="none" style="margin-bottom: 24px;"><path d="M16.9328 0C18.0839 0.000116771 19.1334 0.658832 19.634 1.69531L31.4299 26.1309C32.0708 27.4588 31.1036 28.9999 29.6291 29H2.00215C0.527541 29 -0.439628 27.4588 0.201371 26.1309L11.9973 1.69531C12.4979 0.658823 13.5474 7.75066e-05 14.6984 0H16.9328ZM3.59493 26H28.0363L16.9328 3H14.6984L3.59493 26ZM15.8156 19C16.9202 19.0001 17.8156 19.8955 17.8156 21C17.8156 22.1045 16.9202 22.9999 15.8156 23C14.7111 23 13.8156 22.1046 13.8156 21C13.8156 19.8954 14.7111 19 15.8156 19ZM17.3156 16.5H14.3156V8.5H17.3156V16.5Z" fill="var(--next-error-title)"></path></svg><h1 style="font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 32px; margin: 0px 0px 12px; color: var(--next-error-title);">This page couldn’t load</h1><p style="font-size: 14px; font-weight: 400; line-height: 21px; margin: 0px 0px 20px; color: var(--next-error-message);">A server error occurred. Reload to try again.</p><div style="display: flex; gap: 8px; align-items: center;"><form style="margin: 0px;"><button type="submit" style="display: inline-flex; align-items: center; justify-content: center; height: 32px; padding: 0px 12px; font-size: 14px; font-weight: 500; line-height: 20px; border-radius: 6px; cursor: pointer; color: var(--next-error-btn-text); background: var(--next-error-btn-bg); border: var(--next-error-btn-border);">Reload</button></form></div></div></div><p style="position: fixed; bottom: 32px; left: 0px; right: 0px; text-align: center; font-family: ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, monospace; font-size: 12px; line-height: 18px; font-weight: 400; margin: 0px; color: var(--next-error-digest);">ERROR 2293667475</p></body></html>
+
+[1A[2K  1) [chromium] › tests\e2e.spec.ts:25:7 › Hotel System MVP E2E › Guest can login and view assigned room 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Room 101')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Room 101')[22m
+
+
+      33 |     
+      34 |     // Check Room 101 is there
+    > 35 |     await expect(page.getByText('Room 101', { exact: false })).toBeVisible({ timeout: 10000 });
+         |                                                                ^
+      36 |     
+      37 |     // Check Master On button
+      38 |     const masterOn = page.locator('button', { hasText: 'Master On' }).first();
+        at C:\Users\roumi\Downloads\Hurghada project-20260210T075019Z-1-001\Hurghada project\hotel-system\tests\e2e.spec.ts:35:64
+
+    Error Context: test-results\e2e-Hotel-System-MVP-E2E-G-be9f8-ogin-and-view-assigned-room-chromium\error-context.md
+
+
+[1A[2K  2) [chromium] › tests\e2e.spec.ts:61:7 › Hotel System MVP E2E › Admin check-in vacant room, check-out checked-in room 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Room 102')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Room 102')[22m
+
+
+      72 |     await room102.click();
+      73 |     
+    > 74 |     await expect(page.getByText('Room 102', { exact: false })).toBeVisible({ timeout: 10000 });
+         |                                                                ^
+      75 |     await page.locator('button', { hasText: 'Check In' }).first().click();
+      76 |     await expect(page.getByText('Checked In', { exact: false }).first()).toBeVisible({ timeout: 10000 });
+      77 |
+        at C:\Users\roumi\Downloads\Hurghada project-20260210T075019Z-1-001\Hurghada project\hotel-system\tests\e2e.spec.ts:74:64
+
+    Error Context: test-results\e2e-Hotel-System-MVP-E2E-A-b800b-m-check-out-checked-in-room-chromium\error-context.md
+
+
+[1A[2K[chromium] › tests\e2e.spec.ts:48:7 › Hotel System MVP E2E › Guest cannot view unassigned room
+Failed inside: Guest cannot view unassigned room
+
+[1A[2K<!DOCTYPE html><html id="__next_error__"><head><link rel="stylesheet" href="/_next/static/chunks/01e~7803xv1u1.css" data-precedence="next"><script src="/_next/static/chunks/0pqt~8bl3ukh4.js" async=""></script><script src="/_next/static/chunks/0g09676-pligh.js" async=""></script><script src="/_next/static/chunks/0e-wrhqh4h3r5.js" async=""></script><script src="/_next/static/chunks/turbopack-0-l93qf..z3mn.js" async=""></script><script src="/_next/static/chunks/15lfpa4o3nmst.js" async=""></script><script src="/_next/static/chunks/00-csyj9a6t-x.js" async=""></script><script src="/_next/static/chunks/03~yq9q893hmn.js" nomodule=""></script><style>:root {--next-error-bg: #fff;--next-error-text: #171717;--next-error-title: #171717;--next-error-message: #171717;--next-error-digest: #666666;--next-error-btn-text: #fff;--next-error-btn-bg: #171717;--next-error-btn-border: none;--next-error-btn-secondary-text: #171717;--next-error-btn-secondary-bg: transparent;--next-error-btn-secondary-border: 1px solid rgba(0,0,0,0.08);}@media (prefers-color-scheme: dark) {:root {--next-error-bg: #0a0a0a;--next-error-text: #ededed;--next-error-title: #ededed;--next-error-message: #ededed;--next-error-digest: #a0a0a0;--next-error-btn-text: #0a0a0a;--next-error-btn-bg: #ededed;--next-error-btn-border: none;--next-error-btn-secondary-text: #ededed;--next-error-btn-secondary-bg: transparent;--next-error-btn-secondary-border: 1px solid rgba(255,255,255,0.14);}}body { margin: 0; color: var(--next-error-text); background: var(--next-error-bg); }</style></head><body><script src="/_next/static/chunks/0bo-6z2fpq-v4.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[30824,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"Providers\"]\n3:I[39756,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\"]\n4:I[37457,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\"]\n6:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"OutletBoundary\"]\n7:\"$Sreact.suspense\"\na:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"MetadataBoundary\"]\ne:I[68027,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"default\",1]\n10:I[27201,[\"/_next/static/chunks/15lfpa4o3nmst.js\",\"/_next/static/chunks/00-csyj9a6t-x.js\"],\"IconMark\"]\n:HL[\"/_next/static/chunks/01e~7803xv1u1.css\",\"style\"]\n:HL[\"/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"guest\",\"102\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"guest\",{\"children\":[[\"roomNumber\",\"102\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/01e~7803xv1u1.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/15lfpa4o3nmst.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/00-csyj9a6t-x.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"dark\",\"children\":[\"$\",\"body\",null,{\"className\":\"inter_5972bc34-module__OU16Qa__className bg-slate-950 text-slate-50 antialiased\",\"children\":[\"$\",\"$L2\",null,{\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L5\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0qeq177ejm32..js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L6\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@8\"}]}]]}],{},null,false,null]},null,false,\"$@9\"]},null,false,\"$@9\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/01e~7803xv1u1.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":false,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"KYtpNmy7IO98eiD4icVk6\"}\n"])</script><script>self.__next_f.push([1,"f:[]\n9:\"$Wf\"\nb:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n8:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Hotel System MVP\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Next Generation Guestroom Control\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.0x3dzn~oxb6tn.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L10\",\"3\",{}]]\n"])</script><script>self.__next_f.push([1,"5:E{\"digest\":\"2828464107\"}\n"])</script><div style="font-family: system-ui, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; height: 100vh; display: flex; align-items: center; justify-content: center;"><div style="margin-top: -32px; max-width: 325px; padding: 32px 28px; text-align: left;"><svg width="32" height="32" viewBox="-0.2 -1.5 32 32" fill="none" style="margin-bottom: 24px;"><path d="M16.9328 0C18.0839 0.000116771 19.1334 0.658832 19.634 1.69531L31.4299 26.1309C32.0708 27.4588 31.1036 28.9999 29.6291 29H2.00215C0.527541 29 -0.439628 27.4588 0.201371 26.1309L11.9973 1.69531C12.4979 0.658823 13.5474 7.75066e-05 14.6984 0H16.9328ZM3.59493 26H28.0363L16.9328 3H14.6984L3.59493 26ZM15.8156 19C16.9202 19.0001 17.8156 19.8955 17.8156 21C17.8156 22.1045 16.9202 22.9999 15.8156 23C14.7111 23 13.8156 22.1046 13.8156 21C13.8156 19.8954 14.7111 19 15.8156 19ZM17.3156 16.5H14.3156V8.5H17.3156V16.5Z" fill="var(--next-error-title)"></path></svg><h1 style="font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 32px; margin: 0px 0px 12px; color: var(--next-error-title);">This page couldn’t load</h1><p style="font-size: 14px; font-weight: 400; line-height: 21px; margin: 0px 0px 20px; color: var(--next-error-message);">A server error occurred. Reload to try again.</p><div style="display: flex; gap: 8px; align-items: center;"><form style="margin: 0px;"><button type="submit" style="display: inline-flex; align-items: center; justify-content: center; height: 32px; padding: 0px 12px; font-size: 14px; font-weight: 500; line-height: 20px; border-radius: 6px; cursor: pointer; color: var(--next-error-btn-text); background: var(--next-error-btn-bg); border: var(--next-error-btn-border);">Reload</button></form></div></div></div><p style="position: fixed; bottom: 32px; left: 0px; right: 0px; text-align: center; font-family: ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, monospace; font-size: 12px; line-height: 18px; font-weight: 400; margin: 0px; color: var(--next-error-digest);">ERROR 2828464107</p></body></html>
+
+[1A[2K  3) [chromium] › tests\e2e.spec.ts:48:7 › Hotel System MVP E2E › Guest cannot view unassigned room 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Unauthorized')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Unauthorized')[22m
+
+
+      56 |     await page.goto('/guest/102');
+      57 |     
+    > 58 |     await expect(page.getByText('Unauthorized', { exact: false })).toBeVisible({ timeout: 10000 });
+         |                                                                    ^
+      59 |   });
+      60 |
+      61 |   test('Admin check-in vacant room, check-out checked-in room', async ({ page }) => {
+        at C:\Users\roumi\Downloads\Hurghada project-20260210T075019Z-1-001\Hurghada project\hotel-system\tests\e2e.spec.ts:58:68
+
+    Error Context: test-results\e2e-Hotel-System-MVP-E2E-Guest-cannot-view-unassigned-room-chromium\error-context.md
+
+
+[1A[2K  3 failed
+    [chromium] › tests\e2e.spec.ts:25:7 › Hotel System MVP E2E › Guest can login and view assigned room 
+    [chromium] › tests\e2e.spec.ts:48:7 › Hotel System MVP E2E › Guest cannot view unassigned room ─
+    [chromium] › tests\e2e.spec.ts:61:7 › Hotel System MVP E2E › Admin check-in vacant room, check-out checked-in room 
+  3 passed (33.0s)

@@ -1,0 +1,222 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  GUEST
+}
+
+model User {
+  id               String           @id @default(uuid()) @db.Uuid
+  email            String           @unique
+  password_hash    String
+  full_name        String
+  role             Role             @default(GUEST)
+  is_active        Boolean          @default(true)
+  created_at       DateTime         @default(now())
+  updated_at       DateTime         @updatedAt
+  
+  commands         Command[]
+  guest_requests   GuestRequest[]
+  audit_logs       AuditLog[]
+  room_assignments RoomAssignment[]
+  
+  @@map("users")
+}
+
+enum RoomState {
+  VACANT
+  CHECKED_IN
+  CHECKED_OUT
+  MAINTENANCE
+  OFFLINE
+}
+
+enum AdapterMode {
+  MOCK
+  REAL
+}
+
+model Room {
+  id                     String           @id @default(uuid()) @db.Uuid
+  room_number            String           @unique
+  floor                  String
+  state                  RoomState        @default(VACANT)
+  guest_controls_enabled Boolean          @default(false)
+  do_not_disturb         Boolean          @default(false)
+  housekeeping_requested Boolean          @default(false)
+  occupied_now           Boolean          @default(false)
+  door_open              Boolean          @default(false)
+  current_temperature    Decimal?
+  last_heartbeat_at      DateTime?
+  controller_id          String?          @unique
+  adapter_mode           AdapterMode      @default(MOCK)
+  created_at             DateTime         @default(now())
+  updated_at             DateTime         @updatedAt
+
+  devices                Device[]
+  sensor_readings        SensorReading[]
+  commands               Command[]
+  guest_requests         GuestRequest[]
+  audit_logs             AuditLog[]
+  room_assignments       RoomAssignment[]
+
+  @@map("rooms")
+}
+
+enum DeviceType {
+  LIGHT
+  HVAC
+  TEMP_SENSOR
+  OCCUPANCY_SENSOR
+  DOOR_SENSOR
+  ROOM_CONTROLLER
+  FLAG
+}
+
+model Device {
+  id             String           @id @default(uuid()) @db.Uuid
+  room_id        String           @db.Uuid
+  room           Room             @relation(fields: [room_id], references: [id])
+  device_key     String
+  device_type    DeviceType
+  display_name   String
+  is_enabled     Boolean          @default(true)
+  last_seen_at   DateTime?
+  metadata_json  Json?
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+
+  sensor_readings SensorReading[]
+  commands       Command[]
+
+  @@map("devices")
+}
+
+enum ReadingType {
+  TEMPERATURE
+  OCCUPANCY
+  DOOR
+  HEARTBEAT
+}
+
+model SensorReading {
+  id             String           @id @default(uuid()) @db.Uuid
+  room_id        String           @db.Uuid
+  room           Room             @relation(fields: [room_id], references: [id])
+  device_id      String?          @db.Uuid
+  device         Device?          @relation(fields: [device_id], references: [id])
+  reading_type   ReadingType
+  value_string   String?
+  value_number   Decimal?
+  value_boolean  Boolean?
+  created_at     DateTime         @default(now())
+
+  @@map("sensor_readings")
+}
+
+enum CommandType {
+  LIGHT_SET
+  HVAC_MODE_SET
+  HVAC_SETPOINT_SET
+  GUEST_CONTROLS_SET
+  ROOM_STATE_SET
+  FLAG_SET
+}
+
+enum CommandStatus {
+  PENDING
+  SENT
+  ACKED
+  FAILED
+  TIMEOUT
+}
+
+enum CommandSource {
+  ADMIN_UI
+  GUEST_UI
+  SYSTEM_RULE
+  MOCK_SIMULATOR
+}
+
+model Command {
+  id                   String           @id @default(uuid()) @db.Uuid
+  room_id              String           @db.Uuid
+  room                 Room             @relation(fields: [room_id], references: [id])
+  device_id            String?          @db.Uuid
+  device               Device?          @relation(fields: [device_id], references: [id])
+  command_type         CommandType
+  payload_json         Json
+  status               CommandStatus    @default(PENDING)
+  requested_by_user_id String?          @db.Uuid
+  requested_by_user    User?            @relation(fields: [requested_by_user_id], references: [id])
+  source               CommandSource
+  sent_at              DateTime?
+  acknowledged_at      DateTime?
+  failure_reason       String?
+  created_at           DateTime         @default(now())
+
+  @@map("commands")
+}
+
+enum GuestRequestType {
+  HOUSEKEEPING
+  DND_ON
+  DND_OFF
+}
+
+enum RequestStatus {
+  OPEN
+  RESOLVED
+}
+
+model GuestRequest {
+  id                 String           @id @default(uuid()) @db.Uuid
+  room_id            String           @db.Uuid
+  room               Room             @relation(fields: [room_id], references: [id])
+  request_type       GuestRequestType
+  status             RequestStatus    @default(OPEN)
+  created_by_user_id String?          @db.Uuid
+  created_by_user    User?            @relation(fields: [created_by_user_id], references: [id])
+  created_at         DateTime         @default(now())
+  resolved_at        DateTime?
+
+  @@map("guest_requests")
+}
+
+model AuditLog {
+  id             String           @id @default(uuid()) @db.Uuid
+  actor_user_id  String?          @db.Uuid
+  actor_user     User?            @relation(fields: [actor_user_id], references: [id])
+  actor_role     Role?
+  room_id        String?          @db.Uuid
+  room           Room?            @relation(fields: [room_id], references: [id])
+  action_type    String
+  action_details Json?
+  success        Boolean
+  created_at     DateTime         @default(now())
+
+  @@map("audit_logs")
+}
+
+model RoomAssignment {
+  id             String           @id @default(uuid()) @db.Uuid
+  room_id        String           @db.Uuid
+  room           Room             @relation(fields: [room_id], references: [id])
+  guest_user_id  String?          @db.Uuid
+  guest_user     User?            @relation(fields: [guest_user_id], references: [id])
+  check_in_at    DateTime?
+  check_out_at   DateTime?
+  is_active      Boolean          @default(true)
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+
+  @@map("room_assignments")
+}

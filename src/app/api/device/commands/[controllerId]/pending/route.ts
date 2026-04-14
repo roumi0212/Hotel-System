@@ -35,6 +35,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ cont
         payload = { on: payload.on };
       }
 
+      // ROOM_STATE_SET passes through as-is: { dnd: bool, housekeeping: bool }
+      // ESP32 uses this to drive DND LED and HK LED directly
+
       return {
         id: c.id,
         command_type: cmdType,

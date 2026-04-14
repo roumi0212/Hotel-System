@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { RoomControls } from "@/components/admin/RoomControls";
+import { GuestRequestsPanel } from "@/components/admin/GuestRequestsPanel";
 import { formatDistanceToNow } from "date-fns";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
@@ -18,6 +19,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ roo
     include: {
       room_assignments: { where: { is_active: true }, include: { guest_user: true } },
       audit_logs: { take: 8, orderBy: { created_at: 'desc' }, include: { actor_user: true } },
+      guest_requests: { where: { status: 'OPEN' }, orderBy: { created_at: 'desc' }, include: { created_by_user: true } },
       devices: true
     }
   });
@@ -38,8 +40,12 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ roo
             <h1 className="text-3xl font-bold tracking-tight text-white">Room {room.room_number}</h1>
             <StatusBadge state={room.state} className="text-sm px-3 py-1.5" />
           </div>
+          <Link href={`/admin/rooms/${room.id}/diagnostics`} className="text-sm text-slate-400 hover:text-slate-200 border border-slate-700 hover:border-slate-500 rounded-lg px-3 py-1.5 transition-colors">
+            Diagnostics →
+          </Link>
         </div>
       </div>
+
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         <div className="xl:col-span-2 space-y-6">
@@ -47,8 +53,12 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ roo
             <h3 className="text-lg font-semibold text-white mb-4">Live Status</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="p-4 bg-slate-950/50 border border-slate-800 rounded-xl">
-                <p className="text-sm text-slate-500 font-medium tracking-wide">Temperature</p>
-                <p className="text-2xl font-semibold text-white mt-1">{room.current_temperature ? `${room.current_temperature}°C` : '--'}</p>
+                <p className="text-sm text-slate-500 font-medium tracking-wide">Room Temp</p>
+                <p className="text-2xl font-semibold text-white mt-1">{room.current_temperature ? `${Number(room.current_temperature).toFixed(1)}°C` : '--'}</p>
+              </div>
+              <div className="p-4 bg-slate-950/50 border border-slate-800 rounded-xl">
+                <p className="text-sm text-slate-500 font-medium tracking-wide">AC Target</p>
+                <p className="text-2xl font-semibold text-cyan-400 mt-1">{room.ac_set_temperature ? `${room.ac_set_temperature}°C` : '22°C'}</p>
               </div>
               <div className="p-4 bg-slate-950/50 border border-slate-800 rounded-xl">
                 <p className="text-sm text-slate-500 font-medium tracking-wide">Occupancy</p>
@@ -57,10 +67,6 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ roo
               <div className="p-4 bg-slate-950/50 border border-slate-800 rounded-xl">
                 <p className="text-sm text-slate-500 font-medium tracking-wide">Door</p>
                 <p className={`text-2xl font-semibold mt-1 ${room.door_open ? 'text-red-400' : 'text-white'}`}>{room.door_open ? 'Open' : 'Closed'}</p>
-              </div>
-              <div className="p-4 bg-slate-950/50 border border-slate-800 rounded-xl">
-                <p className="text-sm text-slate-500 font-medium tracking-wide">Guest</p>
-                <p className="text-lg font-semibold text-white mt-2 truncate">{activeGuest ? activeGuest.full_name : 'None'}</p>
               </div>
             </div>
           </div>
@@ -72,6 +78,9 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ roo
             dnd={room.do_not_disturb}
             housekeeping={room.housekeeping_requested}
           />
+
+          {/* Open Guest Requests */}
+          <GuestRequestsPanel roomId={room.id} requests={room.guest_requests as any} />
         </div>
 
         <div className="space-y-6">

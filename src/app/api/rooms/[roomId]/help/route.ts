@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { CommandType, CommandSource, RoomState } from '@prisma/client';
+import { RoomState, GuestRequestType } from '@prisma/client';
+
+const VALID_CATEGORIES = ['Towels', 'Toiletries', 'Pillows', 'Room Issue', 'General'];
 
 export async function POST(request: Request, { params }: { params: Promise<{ roomId: string }> | { roomId: string } }) {
   try {
@@ -10,11 +12,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ roo
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const { roomId } = await params;
-    const { setpoint } = await request.json();
-
-    if (typeof setpoint !== 'number' || setpoint < 18 || setpoint > 30) {
-      return NextResponse.json({ error: 'AC set temperature must be between 18°C and 30°C' }, { status: 400 });
-    }
+    const { category, notes } = await request.json();
 
     const room = await prisma.room.findUnique({ where: { id: roomId }, include: { room_assignments: true } });
     if (!room) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -27,35 +25,34 @@ export async function POST(request: Request, { params }: { params: Promise<{ roo
       if (!activeAssignment) return NextResponse.json({ error: 'Not your room' }, { status: 403 });
     }
 
-    // Persist the target temperature in the Room record
-    await prisma.room.update({
-      where: { id: roomId },
-      data: { ac_set_temperature: setpoint }
-    });
+    if (!category || !VALID_CATEGORIES.includes(category)) {
+      return NextResponse.json({ error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}` }, { status: 400 });
+    }
 
-    const command = await prisma.command.create({
+    const helpRequest = await prisma.guestRequest.create({
       data: {
         room_id: roomId,
-        command_type: CommandType.HVAC_SETPOINT_SET,
-        payload_json: { setpoint },
-        requested_by_user_id: session.user.id,
-        source: session.user.role === 'GUEST' ? CommandSource.GUEST_UI : CommandSource.ADMIN_UI,
+        request_type: GuestRequestType.HELP,
+        category,
+        notes: notes || null,
+        created_by_user_id: session.user.id,
       }
     });
 
     await prisma.auditLog.create({
       data: {
-        action_type: 'HVAC_SETPOINT_COMMAND',
+        action_type: 'HELP_REQUEST',
         success: true,
         actor_user_id: session.user.id,
         actor_role: session.user.role as any,
         room_id: roomId,
-        action_details: { setpoint }
+        action_details: { category, notes }
       }
     });
 
-    return NextResponse.json({ success: true, commandStatus: "PENDING" });
+    return NextResponse.json({ success: true, requestId: helpRequest.id });
   } catch (error) {
+    console.error('[HELP_ROUTE_ERROR]', error);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }

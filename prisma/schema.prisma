@@ -23,10 +23,11 @@ model User {
   created_at       DateTime         @default(now())
   updated_at       DateTime         @updatedAt
   
-  commands         Command[]
-  guest_requests   GuestRequest[]
-  audit_logs       AuditLog[]
-  room_assignments RoomAssignment[]
+  commands              Command[]
+  guest_requests        GuestRequest[]    @relation("CreatedRequests")
+  resolved_requests     GuestRequest[]    @relation("ResolvedRequests")
+  audit_logs            AuditLog[]
+  room_assignments      RoomAssignment[]
   
   @@map("users")
 }
@@ -55,6 +56,7 @@ model Room {
   occupied_now           Boolean          @default(false)
   door_open              Boolean          @default(false)
   current_temperature    Decimal?
+  ac_set_temperature     Decimal?         @default(22)
   last_heartbeat_at      DateTime?
   controller_id          String?          @unique
   adapter_mode           AdapterMode      @default(MOCK)
@@ -170,6 +172,15 @@ enum GuestRequestType {
   HOUSEKEEPING
   DND_ON
   DND_OFF
+  HELP
+}
+
+enum HousekeepingTimeSlot {
+  NOW
+  MORNING
+  AFTERNOON
+  EVENING
+  CUSTOM
 }
 
 enum RequestStatus {
@@ -178,15 +189,20 @@ enum RequestStatus {
 }
 
 model GuestRequest {
-  id                 String           @id @default(uuid()) @db.Uuid
-  room_id            String           @db.Uuid
-  room               Room             @relation(fields: [room_id], references: [id])
-  request_type       GuestRequestType
-  status             RequestStatus    @default(OPEN)
-  created_by_user_id String?          @db.Uuid
-  created_by_user    User?            @relation(fields: [created_by_user_id], references: [id])
-  created_at         DateTime         @default(now())
-  resolved_at        DateTime?
+  id                   String                @id @default(uuid()) @db.Uuid
+  room_id              String                @db.Uuid
+  room                 Room                  @relation(fields: [room_id], references: [id])
+  request_type         GuestRequestType
+  status               RequestStatus         @default(OPEN)
+  preferred_time_slot  HousekeepingTimeSlot?
+  category             String?
+  notes                String?
+  resolved_by_user_id  String?               @db.Uuid
+  resolved_by_user     User?                 @relation("ResolvedRequests", fields: [resolved_by_user_id], references: [id])
+  created_by_user_id   String?               @db.Uuid
+  created_by_user      User?                 @relation("CreatedRequests", fields: [created_by_user_id], references: [id])
+  created_at           DateTime              @default(now())
+  resolved_at          DateTime?
 
   @@map("guest_requests")
 }

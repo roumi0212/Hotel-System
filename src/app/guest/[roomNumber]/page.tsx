@@ -13,7 +13,6 @@ export default async function GuestDashboardPage({ params }: { params: Promise<{
   
   if (!session) redirect("/login");
 
-  // Handle Next.js 15 async params
   const unwrappedParams = await params;
 
   const room = await prisma.room.findUnique({
@@ -50,6 +49,8 @@ export default async function GuestDashboardPage({ params }: { params: Promise<{
         dnd={room.do_not_disturb}
         housekeeping={room.housekeeping_requested}
         guestName={guestName}
+        currentTemperature={room.current_temperature ? Number(room.current_temperature) : null}
+        acSetTemperature={room.ac_set_temperature ? Number(room.ac_set_temperature) : 22}
       />
     </div>
   );

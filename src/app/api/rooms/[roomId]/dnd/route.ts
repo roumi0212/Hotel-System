@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { RoomState } from '@prisma/client';
+import { RoomState, CommandType, CommandSource } from '@prisma/client';
 
 export async function POST(request: Request, { params }: { params: Promise<{ roomId: string }> | { roomId: string } }) {
   try {
@@ -23,9 +23,21 @@ export async function POST(request: Request, { params }: { params: Promise<{ roo
       if (!activeAssignment) return NextResponse.json({ error: 'Not your room' }, { status: 403 });
     }
 
+    // Update live room flag
     await prisma.room.update({
       where: { id: roomId },
       data: { do_not_disturb: enabled }
+    });
+
+    // Dispatch ROOM_STATE_SET so ESP32 drives DND LED + HK LED accurately
+    await prisma.command.create({
+      data: {
+        room_id: roomId,
+        command_type: CommandType.ROOM_STATE_SET,
+        payload_json: { dnd: enabled, housekeeping: room.housekeeping_requested },
+        requested_by_user_id: session.user.id,
+        source: session.user.role === 'GUEST' ? CommandSource.GUEST_UI : CommandSource.ADMIN_UI,
+      }
     });
 
     await prisma.auditLog.create({
@@ -41,6 +53,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ roo
 
     return NextResponse.json({ success: true, doNotDisturb: enabled });
   } catch (error) {
+    console.error('[DND_ROUTE_ERROR]', error);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }

@@ -13,7 +13,6 @@ export function Sidebar() {
     { href: "/admin", label: "Overview", icon: LayoutDashboard },
     { href: "/admin/rooms", label: "Rooms", icon: Building2 },
     { href: "/admin/audit", label: "Audit Logs", icon: ScrollText },
-    { href: "/admin/simulator", label: "Simulator", icon: Activity },
   ];
 
   if (session?.user?.role === "SUPER_ADMIN") {

@@ -43,8 +43,19 @@ Open `http://localhost:3000` in your browser. It will redirect to `/login`.
 ## Environment Variables
 The application uses the following in `.env`:
 - `DATABASE_URL` (Required for Prisma)
-- `NEXTAUTH_SECRET` (Required for sessions)
-- `NEXTAUTH_URL` (Required for NextAuth redirect generation)
+- `NEXTAUTH_SECRET` (Required for sessions, must match in production)
+- `NEXTAUTH_URL` (Required for NextAuth redirect generation, use `http://localhost:3000` locally and your actual domain in Railway for production)
+
+## Railway Deployment
+This project is fully configured for zero-downtime deployment on Railway:
+1. Push the repository to GitHub.
+2. In Railway, click **New Project** -> **Deploy from GitHub repo**.
+3. Railway will automatically detect the `railway.json` configuration config which handles building Next.js and Prisma.
+4. Go to the Railway project variables and add:
+   - `DATABASE_URL` (Map it to your Neon PostgreSQL or Railway PostgreSQL instance)
+   - `NEXTAUTH_SECRET` (Generated secret key)
+   - `NEXTAUTH_URL` (The Railway public domain, ex: `https://your-hotel-app.up.railway.app`)
+5. Railway handles the `npx prisma generate` command automatically on build pipeline.
 
 ## Hardware Integration Guide
 Currently, room controllers are simulated by `AdapterMode.MOCK`. To plug in real hardware (like ESP32 via MQTT or HTTP):

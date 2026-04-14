@@ -47,6 +47,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ roo
 
     return NextResponse.json({ success: true, commandStatus: "PENDING" });
   } catch (error) {
+    console.error('[LIGHTS_MAIN_ROUTE_ERROR]', error);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }

@@ -1,0 +1,247 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]:
+    - img [ref=e8]
+  - alert [ref=e11]
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - img [ref=e16]
+        - generic [ref=e20]: Hotel Admin
+      - navigation [ref=e21]:
+        - link "Overview" [ref=e22] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e23]
+          - text: Overview
+        - link "Rooms" [ref=e28] [cursor=pointer]:
+          - /url: /admin/rooms
+          - img [ref=e29]
+          - text: Rooms
+        - link "Audit Logs" [ref=e33] [cursor=pointer]:
+          - /url: /admin/audit
+          - img [ref=e34]
+          - text: Audit Logs
+        - link "Simulator" [ref=e37] [cursor=pointer]:
+          - /url: /admin/simulator
+          - img [ref=e38]
+          - text: Simulator
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: Hotel Admin
+          - paragraph [ref=e43]: admin@hotel.local
+        - button "Sign Out" [ref=e44]:
+          - img [ref=e45]
+          - text: Sign Out
+    - main [ref=e48]:
+      - generic [ref=e50]:
+        - generic [ref=e52]:
+          - heading "Rooms Status" [level=1] [ref=e53]
+          - paragraph [ref=e54]: Manage guestrooms and devices
+        - generic [ref=e55]:
+          - link "101 Checked In 22.5°C Guest 101 Occupied • Closed" [ref=e56] [cursor=pointer]:
+            - /url: /admin/rooms/d4586d49-7c66-4e70-afec-217265abcaee
+            - generic [ref=e57]:
+              - generic [ref=e58]:
+                - generic [ref=e59]:
+                  - generic [ref=e60]:
+                    - heading "101" [level=2] [ref=e61]
+                    - img [ref=e62]
+                  - generic [ref=e68]: Checked In
+                - generic [ref=e70]:
+                  - img [ref=e71]
+                  - text: 22.5°C
+              - generic [ref=e73]:
+                - generic [ref=e74]:
+                  - img [ref=e75]
+                  - text: Guest 101
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Occupied
+                  - generic [ref=e80]: •
+                  - generic [ref=e81]:
+                    - img [ref=e82]
+                    - text: Closed
+          - link "102 Vacant 22.5°C No Guest Empty • Closed" [ref=e85] [cursor=pointer]:
+            - /url: /admin/rooms/11bd047a-6246-4e1f-8415-94937be76b02
+            - generic [ref=e86]:
+              - generic [ref=e87]:
+                - generic [ref=e88]:
+                  - heading "102" [level=2] [ref=e90]
+                  - generic [ref=e92]: Vacant
+                - generic [ref=e94]:
+                  - img [ref=e95]
+                  - text: 22.5°C
+              - generic [ref=e97]:
+                - generic [ref=e98]:
+                  - img [ref=e99]
+                  - text: No Guest
+                - generic [ref=e102]:
+                  - generic [ref=e103]: Empty
+                  - generic [ref=e104]: •
+                  - generic [ref=e105]:
+                    - img [ref=e106]
+                    - text: Closed
+          - link "103 Checked Out 22.5°C No Guest Empty • Closed" [ref=e109] [cursor=pointer]:
+            - /url: /admin/rooms/f3f2a7a2-f891-42fc-9943-beeea6ef032c
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - generic [ref=e112]:
+                  - generic [ref=e113]:
+                    - heading "103" [level=2] [ref=e114]
+                    - img [ref=e115]
+                  - generic [ref=e119]: Checked Out
+                - generic [ref=e121]:
+                  - img [ref=e122]
+                  - text: 22.5°C
+              - generic [ref=e124]:
+                - generic [ref=e125]:
+                  - img [ref=e126]
+                  - text: No Guest
+                - generic [ref=e129]:
+                  - generic [ref=e130]: Empty
+                  - generic [ref=e131]: •
+                  - generic [ref=e132]:
+                    - img [ref=e133]
+                    - text: Closed
+          - link "104 Maintenance 22.5°C No Guest Empty • Closed" [ref=e136] [cursor=pointer]:
+            - /url: /admin/rooms/1c88234b-f6c9-4070-8acd-2460e8d64656
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - generic [ref=e139]:
+                  - heading "104" [level=2] [ref=e141]
+                  - generic [ref=e143]: Maintenance
+                - generic [ref=e145]:
+                  - img [ref=e146]
+                  - text: 22.5°C
+              - generic [ref=e148]:
+                - generic [ref=e149]:
+                  - img [ref=e150]
+                  - text: No Guest
+                - generic [ref=e153]:
+                  - generic [ref=e154]: Empty
+                  - generic [ref=e155]: •
+                  - generic [ref=e156]:
+                    - img [ref=e157]
+                    - text: Closed
+          - link "105 Offline 22.5°C No Guest Empty • Closed" [ref=e160] [cursor=pointer]:
+            - /url: /admin/rooms/b60232ac-877d-4bc2-a039-03c19b62c7b3
+            - generic [ref=e161]:
+              - generic [ref=e162]:
+                - generic [ref=e163]:
+                  - heading "105" [level=2] [ref=e165]
+                  - generic [ref=e167]: Offline
+                - generic [ref=e169]:
+                  - img [ref=e170]
+                  - text: 22.5°C
+              - generic [ref=e172]:
+                - generic [ref=e173]:
+                  - img [ref=e174]
+                  - text: No Guest
+                - generic [ref=e177]:
+                  - generic [ref=e178]: Empty
+                  - generic [ref=e179]: •
+                  - generic [ref=e180]:
+                    - img [ref=e181]
+                    - text: Closed
+          - link "106 Checked In 22.5°C No Guest Occupied • Closed" [ref=e184] [cursor=pointer]:
+            - /url: /admin/rooms/30e03fe4-17c6-4b7f-bfa7-406dced4a00a
+            - generic [ref=e185]:
+              - generic [ref=e186]:
+                - generic [ref=e187]:
+                  - heading "106" [level=2] [ref=e189]
+                  - generic [ref=e191]: Checked In
+                - generic [ref=e193]:
+                  - img [ref=e194]
+                  - text: 22.5°C
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - img [ref=e198]
+                  - text: No Guest
+                - generic [ref=e201]:
+                  - generic [ref=e202]: Occupied
+                  - generic [ref=e203]: •
+                  - generic [ref=e204]:
+                    - img [ref=e205]
+                    - text: Closed
+          - link "107 Vacant 22.5°C No Guest Empty • Closed" [ref=e208] [cursor=pointer]:
+            - /url: /admin/rooms/11f8130a-4eff-4725-aa85-d12f7eb8a6c5
+            - generic [ref=e209]:
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - heading "107" [level=2] [ref=e213]
+                  - generic [ref=e215]: Vacant
+                - generic [ref=e217]:
+                  - img [ref=e218]
+                  - text: 22.5°C
+              - generic [ref=e220]:
+                - generic [ref=e221]:
+                  - img [ref=e222]
+                  - text: No Guest
+                - generic [ref=e225]:
+                  - generic [ref=e226]: Empty
+                  - generic [ref=e227]: •
+                  - generic [ref=e228]:
+                    - img [ref=e229]
+                    - text: Closed
+          - link "108 Vacant 22.5°C No Guest Empty • Closed" [ref=e232] [cursor=pointer]:
+            - /url: /admin/rooms/2f39d8fc-c37f-44dd-8b2c-816d5160a033
+            - generic [ref=e233]:
+              - generic [ref=e234]:
+                - generic [ref=e235]:
+                  - heading "108" [level=2] [ref=e237]
+                  - generic [ref=e239]: Vacant
+                - generic [ref=e241]:
+                  - img [ref=e242]
+                  - text: 22.5°C
+              - generic [ref=e244]:
+                - generic [ref=e245]:
+                  - img [ref=e246]
+                  - text: No Guest
+                - generic [ref=e249]:
+                  - generic [ref=e250]: Empty
+                  - generic [ref=e251]: •
+                  - generic [ref=e252]:
+                    - img [ref=e253]
+                    - text: Closed
+          - link "109 Checked In 22.5°C No Guest Occupied • Closed" [ref=e256] [cursor=pointer]:
+            - /url: /admin/rooms/3d3da8f2-915a-4604-9447-c37fe2c89cef
+            - generic [ref=e257]:
+              - generic [ref=e258]:
+                - generic [ref=e259]:
+                  - heading "109" [level=2] [ref=e261]
+                  - generic [ref=e263]: Checked In
+                - generic [ref=e265]:
+                  - img [ref=e266]
+                  - text: 22.5°C
+              - generic [ref=e268]:
+                - generic [ref=e269]:
+                  - img [ref=e270]
+                  - text: No Guest
+                - generic [ref=e273]:
+                  - generic [ref=e274]: Occupied
+                  - generic [ref=e275]: •
+                  - generic [ref=e276]:
+                    - img [ref=e277]
+                    - text: Closed
+          - link "110 Vacant 22.5°C No Guest Empty • Closed" [ref=e280] [cursor=pointer]:
+            - /url: /admin/rooms/d3fe57d1-4e8b-4874-aa97-c02a2547fddf
+            - generic [ref=e281]:
+              - generic [ref=e282]:
+                - generic [ref=e283]:
+                  - heading "110" [level=2] [ref=e285]
+                  - generic [ref=e287]: Vacant
+                - generic [ref=e289]:
+                  - img [ref=e290]
+                  - text: 22.5°C
+              - generic [ref=e292]:
+                - generic [ref=e293]:
+                  - img [ref=e294]
+                  - text: No Guest
+                - generic [ref=e297]:
+                  - generic [ref=e298]: Empty
+                  - generic [ref=e299]: •
+                  - generic [ref=e300]:
+                    - img [ref=e301]
+                    - text: Closed
+```

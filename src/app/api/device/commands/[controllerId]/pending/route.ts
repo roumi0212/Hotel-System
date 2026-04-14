@@ -24,7 +24,25 @@ export async function GET(request: Request, { params }: { params: Promise<{ cont
       });
     }
 
-    return NextResponse.json({ commands });
+    // Format for ESP32 constraints
+    const formattedCommands = commands.map(c => {
+      let cmdType = c.command_type as string;
+      let payload = c.payload_json as any;
+      
+      // Translate LIGHT_SET -> LIGHTS_MAIN
+      if (cmdType === 'LIGHT_SET' && payload?.target === 'mainLight') {
+        cmdType = 'LIGHTS_MAIN';
+        payload = { on: payload.on };
+      }
+
+      return {
+        id: c.id,
+        command_type: cmdType,
+        payload: payload,
+      };
+    });
+
+    return NextResponse.json({ commands: formattedCommands });
   } catch (error) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }

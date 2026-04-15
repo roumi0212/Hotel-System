@@ -127,15 +127,15 @@ async function main() {
     });
 
     // ---------------------------------------------------------------------------
-    // To add Room 102 in the future, uncomment and run again:
+    // Provision Room 102
     // ---------------------------------------------------------------------------
-    // await provisionController({
-    //   roomNumber:      '102',
-    //   controllerId:    'ESP_102',
-    //   friendlyName:    'Floor 1 - Room 102',
-    //   notes:           'ESP32-WROVER DevKit.',
-    //   firmwareVersion: '1.0.0',
-    // });
+    await provisionController({
+      roomNumber:      '102',
+      controllerId:    'ESP_102',
+      friendlyName:    'Floor 1 - Room 102',
+      notes:           'ESP32-WROVER DevKit.',
+      firmwareVersion: '1.0.0',
+    });
 
     // Run verification
     await verifyRoom101();

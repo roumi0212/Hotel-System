@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Building2, LayoutDashboard, Settings, ScrollText, Users, LogOut, Activity } from "lucide-react";
+import { Building2, LayoutDashboard, Settings, ScrollText, Users, LogOut, Activity, Cpu } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
 export function Sidebar() {
@@ -12,6 +12,7 @@ export function Sidebar() {
   const links = [
     { href: "/admin", label: "Overview", icon: LayoutDashboard },
     { href: "/admin/rooms", label: "Rooms", icon: Building2 },
+    { href: "/admin/devices", label: "Devices", icon: Cpu },
     { href: "/admin/audit", label: "Audit Logs", icon: ScrollText },
   ];
 

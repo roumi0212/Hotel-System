@@ -58,11 +58,13 @@ model Room {
   current_temperature    Decimal?
   ac_set_temperature     Decimal?         @default(22)
   last_heartbeat_at      DateTime?
+  last_state_sync_at     DateTime?
   controller_id          String?          @unique
   adapter_mode           AdapterMode      @default(MOCK)
   created_at             DateTime         @default(now())
   updated_at             DateTime         @updatedAt
 
+  room_controller        RoomController?
   devices                Device[]
   sensor_readings        SensorReading[]
   commands               Command[]
@@ -72,6 +74,7 @@ model Room {
 
   @@map("rooms")
 }
+
 
 enum DeviceType {
   LIGHT
@@ -236,3 +239,31 @@ model RoomAssignment {
 
   @@map("room_assignments")
 }
+
+// =============================================================================
+// ESP32 Device Registry — one record per physical hardware controller unit
+// =============================================================================
+// - controller_id follows the convention ESP_<room_number> (e.g. ESP_101)
+// - Each RoomController is uniquely bound to one Room via room_id
+// - Online/offline is computed at query time:
+//     isOnline = (now - max(last_heartbeat_at, last_state_sync_at)) < 60s
+// - Add new rooms by inserting a new row (no code changes needed)
+// =============================================================================
+model RoomController {
+  id                  String      @id @default(uuid()) @db.Uuid
+  controller_id       String      @unique             // e.g. "ESP_101"
+  room_id             String      @unique @db.Uuid
+  room                Room        @relation(fields: [room_id], references: [id])
+  friendly_name       String?                         // e.g. "Floor 1 Room 101"
+  adapter_mode        AdapterMode @default(REAL)
+  last_heartbeat_at   DateTime?                       // set on each /pending poll
+  last_state_sync_at  DateTime?                       // set on each /state-sync
+  ip_address          String?                         // last known WiFi IP
+  firmware_version    String?     @default("1.0.0")
+  notes               String?                         // physical location / hardware notes
+  created_at          DateTime    @default(now())
+  updated_at          DateTime    @updatedAt
+
+  @@map("room_controllers")
+}
+
